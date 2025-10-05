@@ -40,6 +40,75 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                children: [
+                  MaterialButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(color: Colors.white38)),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Tv Shows",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(
+                          Icons.tv,
+                          color: Colors.white,
+                          size: 17,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  MaterialButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(color: Colors.white38)),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Categories",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(width: 1),
+                        Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Stack(
+                children: [
+                  Container(
+                    height: 450,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.grey.shade800)),
+                  )
+                ],
+              ),
+            )
           ],
         ));
   }

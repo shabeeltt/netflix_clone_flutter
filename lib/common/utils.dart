@@ -1,4 +1,5 @@
-const baseUrlDev = "http://192.168.1.7:3000";
-// const baseUrlProd = "http://192.168.1.7";
+const baseUrlDev = "http://192.168.1.7:3000"; //local server within same wifi
+// const baseUrlProd = "http://192.168.1.7";//hosted production server
 
-const baseImageUrl = "https://image.tmdb.org/t/p/w500";
+const baseImageUrl =
+    "https://image.tmdb.org/t/p/w500"; //base image url for tmdb

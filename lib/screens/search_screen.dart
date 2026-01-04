@@ -13,7 +13,10 @@ class SearchScreen extends StatelessWidget {
         title: Center(child: Text("search Page")),
       ),
       body: Center(
-        child: Text("This is the netflix Home page"),
+        child: Text(
+          "This is the netflix Home page",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }

@@ -1,5 +1,4 @@
-//tmdb api key
-const apiKey = "";
+const baseUrlDev = "http://192.168.1.7:3000";
+// const baseUrlProd = "http://192.168.1.7";
 
-// tmdb base url
-const baseUrl = "https://api.themoviedb.org/3/";
+const baseImageUrl = "https://image.tmdb.org/t/p/w500";

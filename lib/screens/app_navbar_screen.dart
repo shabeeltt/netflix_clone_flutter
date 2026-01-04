@@ -15,23 +15,26 @@ class AppNavbarScreen extends StatelessWidget {
           bottomNavigationBar: Container(
             color: Colors.black,
             height: 70,
-            child: TabBar(
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.home),
-                  text: "Home",
-                ),
-                Tab(
-                  icon: Icon(Icons.search),
-                  text: "Search",
-                ),
-                Tab(
-                  icon: Icon(Icons.photo_library_outlined),
-                  text: "Hot News",
-                ),
-              ],
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Colors.white,
+            child: Material(
+              color: Colors.black,
+              child: TabBar(
+                tabs: [
+                  Tab(
+                    icon: Icon(Icons.home),
+                    text: "Home",
+                  ),
+                  Tab(
+                    icon: Icon(Icons.search),
+                    text: "Search",
+                  ),
+                  Tab(
+                    icon: Icon(Icons.photo_library_outlined),
+                    text: "Hot News",
+                  ),
+                ],
+                unselectedLabelColor: Colors.grey,
+                indicatorColor: Colors.white,
+              ),
             ),
           ),
           body: TabBarView(

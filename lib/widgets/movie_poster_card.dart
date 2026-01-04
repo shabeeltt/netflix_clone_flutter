@@ -23,7 +23,7 @@ class MoviePosterCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.white.withAlpha((0.1 * 255).round()),
               width: 1,
             ),
           ),
@@ -69,14 +69,14 @@ class MoviePosterCard extends StatelessWidget {
       left: 0,
       right: 0,
       child: Container(
-        height: 200,
+        height: 250,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.transparent,
-              Colors.black87,
+              Color.fromARGB(0, 0, 0, 0),
+              Color.fromARGB(255, 0, 0, 0),
             ],
           ),
         ),

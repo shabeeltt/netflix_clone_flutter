@@ -32,6 +32,7 @@ class AppNavbarScreen extends StatelessWidget {
                     text: "Hot News",
                   ),
                 ],
+                labelColor: Colors.red,
                 unselectedLabelColor: Colors.grey,
                 indicatorColor: Colors.white,
               ),

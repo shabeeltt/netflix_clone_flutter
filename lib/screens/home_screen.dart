@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone_flutter/services/api_services.dart';
 import 'package:netflix_clone_flutter/model/now_playing_movies.model.dart';
 import 'package:netflix_clone_flutter/widgets/now_playing_carousel.dart';
+import 'package:netflix_clone_flutter/widgets/trending_movies.dart';
+import 'package:netflix_clone_flutter/widgets/upcoming_movies.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,19 +26,63 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 50),
-          _buildTopBar(),
-          const SizedBox(height: 10),
-          _buildFilters(),
-          const SizedBox(height: 10),
-          SizedBox(
-            height: 480,
-            child: NowPlayingCarousel(future: _movieData),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:
+              const EdgeInsets.only(bottom: 80), // avoid bottom bar overlap
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 50),
+              _buildTopBar(),
+              const SizedBox(height: 10),
+              _buildFilters(),
+              const SizedBox(height: 10),
+              // NowPlaying Carousel
+              SizedBox(
+                height: 480,
+                child: NowPlayingCarousel(future: _movieData),
+              ),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  "Trending Now",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 200,
+                child: TrendingMoviesWidget(),
+              ),
+              const SizedBox(height: 20),
+
+              // Upcoming Movies section
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  "Upcoming Movies",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 200, // height of the posters
+                child: UpcomingMoviesWidget(), // widget you’ll create
+              ),
+              SizedBox(height: 20),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -26,63 +26,65 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding:
-              const EdgeInsets.only(bottom: 80), // avoid bottom bar overlap
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 50),
-              _buildTopBar(),
-              const SizedBox(height: 10),
-              _buildFilters(),
-              const SizedBox(height: 10),
-              // NowPlaying Carousel
-              SizedBox(
-                height: 480,
-                child: NowPlayingCarousel(future: _movieData),
-              ),
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  "Trending Now",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 200,
-                child: TrendingMoviesWidget(),
-              ),
-              const SizedBox(height: 20),
+      body: Column(
+        children: [
+          const SizedBox(height: 50),
+          _buildTopBar(),
 
-              // Upcoming Movies section
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  "Upcoming Movies",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+          // 👇 Everything below can scroll
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 80),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  _buildFilters(),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 480,
+                    child: NowPlayingCarousel(future: _movieData),
                   ),
-                ),
+                  const SizedBox(height: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      "Trending Now",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 200,
+                    child: TrendingMoviesWidget(),
+                  ),
+                  const SizedBox(height: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      "Upcoming Movies",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 200,
+                    child: UpcomingMoviesWidget(),
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 200, // height of the posters
-                child: UpcomingMoviesWidget(), // widget you’ll create
-              ),
-              SizedBox(height: 20),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -100,8 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const Spacer(),
           _iconButton(Icons.search),
-          _iconButton(Icons.download),
-          _iconButton(Icons.cast),
+          _iconButton(Icons.favorite),
         ],
       ),
     );

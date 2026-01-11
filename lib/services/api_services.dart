@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:netflix_clone_flutter/model/movie_details.model.dart';
 import 'package:netflix_clone_flutter/model/now_playing_movies.model.dart';
 import 'package:netflix_clone_flutter/common/utils.dart';
 import 'package:netflix_clone_flutter/model/trending_movies.model.dart';
 import 'package:netflix_clone_flutter/model/upcoming_movies.model.dart';
+import 'package:flutter/foundation.dart';
 
 class ApiServices {
   // fetch now playing movies
@@ -23,7 +25,7 @@ class ApiServices {
             "Error fetching movies: ${response.statusCode} ${response.reasonPhrase}");
       }
     } catch (e) {
-      print("Error fetching movies: $e");
+      debugPrint("Error fetching movies: $e");
       return null;
     }
   }
@@ -45,7 +47,7 @@ class ApiServices {
             "Error fetching upcoming movies: ${response.statusCode} ${response.reasonPhrase}");
       }
     } catch (e) {
-      print("Error fetching upcoming movies: $e");
+      debugPrint("Error fetching upcoming movies: $e");
       return null;
     }
   }
@@ -70,7 +72,28 @@ class ApiServices {
         throw Exception('Failed to load trending movies');
       }
     } catch (e) {
-      print('Trending movies error: $e');
+      debugPrint('Trending movies error: $e');
+      return null;
+    }
+  }
+
+  // Fetch single movie details by ID
+  Future<MovieDetails?> fetchMovieDetails(int movieId) async {
+    try {
+      final url = Uri.parse('$baseUrlDev/movies/$movieId');
+
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> jsonData = json.decode(response.body);
+        // Map JSON to your MovieDetails model
+        return MovieDetails.fromJson(jsonData);
+      } else {
+        throw Exception(
+            'Error fetching movie details: ${response.statusCode} ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      debugPrint('Error fetching movie details: $e');
       return null;
     }
   }

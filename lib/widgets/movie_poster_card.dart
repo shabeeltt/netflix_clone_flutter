@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_flutter/common/utils.dart';
 import 'package:netflix_clone_flutter/model/now_playing_movies.model.dart';
+import 'package:netflix_clone_flutter/screens/movie_detail_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MoviePosterCard extends StatelessWidget {
@@ -17,7 +18,14 @@ class MoviePosterCard extends StatelessWidget {
 
     return GestureDetector(
         onTap: () {
-          debugPrint("Tapped: ${movie.title}");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => MovieDetailsScreen(
+                movieId: movie.id,
+              ),
+            ),
+          );
         },
         child: Container(
           decoration: BoxDecoration(

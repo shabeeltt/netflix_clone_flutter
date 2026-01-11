@@ -13,14 +13,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    _navigate();
+  }
 
-    // Delay for 3 seconds, then navigate
-    Future.delayed(const Duration(seconds: 4), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const AppNavbarScreen()),
-      );
-    });
+  Future<void> _navigate() async {
+    await Future.delayed(const Duration(seconds: 4));
+    if (!mounted) return;
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const AppNavbarScreen()),
+    );
   }
 
   @override

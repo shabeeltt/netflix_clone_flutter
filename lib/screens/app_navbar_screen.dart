@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone_flutter/screens/account_screen.dart';
 import 'package:netflix_clone_flutter/screens/home_screen.dart';
 import 'package:netflix_clone_flutter/screens/hot_news_screen.dart';
 import 'package:netflix_clone_flutter/screens/search_screen.dart';
@@ -9,7 +10,7 @@ class AppNavbarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 4,
         child: Scaffold(
           backgroundColor: Colors.black,
           bottomNavigationBar: Container(
@@ -31,6 +32,10 @@ class AppNavbarScreen extends StatelessWidget {
                     icon: Icon(Icons.photo_library_outlined),
                     text: "Hot News",
                   ),
+                  Tab(
+                    icon: Icon(Icons.person),
+                    text: "Account",
+                  ),
                 ],
                 labelColor: Colors.red,
                 unselectedLabelColor: Colors.grey,
@@ -38,8 +43,12 @@ class AppNavbarScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: TabBarView(
-              children: [HomeScreen(), SearchScreen(), HotNewsScreen()]),
+          body: TabBarView(children: [
+            HomeScreen(),
+            SearchScreen(),
+            HotNewsScreen(),
+            AccountScreen()
+          ]),
         ));
   }
 }

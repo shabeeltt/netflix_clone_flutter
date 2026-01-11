@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_flutter/common/utils.dart';
 import 'package:netflix_clone_flutter/model/trending_movies.model.dart';
+import 'package:netflix_clone_flutter/screens/movie_detail_screen.dart';
 import 'package:netflix_clone_flutter/services/api_services.dart';
+import 'package:netflix_clone_flutter/widgets/movie_poster_tile.dart';
 
 class TrendingMoviesWidget extends StatefulWidget {
   const TrendingMoviesWidget({super.key});
@@ -62,25 +63,18 @@ class _TrendingMoviesWidgetState extends State<TrendingMoviesWidget> {
                 left: index == 0 ? 15 : 8,
                 right: 8,
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(
-                  "$baseImageUrl/${movie.posterPath}",
-                  width: 120,
-                  height: 180,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) {
-                    return Container(
-                      width: 120,
-                      height: 180,
-                      color: Colors.grey[900],
-                      child: const Icon(
-                        Icons.broken_image,
-                        color: Colors.white54,
+              child: MoviePosterTile(
+                posterPath: movie.posterPath,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MovieDetailsScreen(
+                        movieId: movie.id,
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
             );
           },

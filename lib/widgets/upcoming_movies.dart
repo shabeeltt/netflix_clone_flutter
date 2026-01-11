@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_flutter/common/utils.dart';
+import 'package:netflix_clone_flutter/screens/movie_detail_screen.dart';
+import 'package:netflix_clone_flutter/widgets/movie_poster_tile.dart';
 import '../model/upcoming_movies.model.dart';
 import '../services/api_services.dart';
 
@@ -56,23 +57,18 @@ class _UpcomingMoviesWidgetState extends State<UpcomingMoviesWidget> {
             final movie = movies[index];
             return Padding(
               padding: EdgeInsets.only(left: index == 0 ? 15 : 10, right: 10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(
-                  "$baseImageUrl/${movie.posterPath}",
-                  width: 120,
-                  height: 180,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      width: 120,
-                      height: 180,
-                      color: Colors.grey[800],
-                      child:
-                          const Icon(Icons.broken_image, color: Colors.white),
-                    );
-                  },
-                ),
+              child: MoviePosterTile(
+                posterPath: movie.posterPath,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MovieDetailsScreen(
+                        movieId: movie.id,
+                      ),
+                    ),
+                  );
+                },
               ),
             );
           },
